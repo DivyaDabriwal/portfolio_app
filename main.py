@@ -1,5 +1,5 @@
 import streamlit as st
-import csv
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -22,28 +22,20 @@ with col2:
 
 st.write('Below you can find some of the apps I have built in Python, Feel free to contact me!')
 
-csv_file_content = []
-with open('files/data.csv') as file:
-    csv_file = csv.DictReader(file, delimiter=';')
-    for i in csv_file:
-        csv_file_content.append(i)
+df = pandas.read_csv("files/data.csv", sep=';')
 
 col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
 
 with col3:
-    for row in csv_file_content[:10]:
-        st.header(row['title'])
-        st.image('files/images/' + row['image'])
-        st.write(row['description'])
-        st.link_button('Source Code', row['url']) #shown as a button
-        # st.page_link(row['url'], label='Source Code') #shown as a simple plain text
-        # st.write(f"[Source Code]({row['url']})") #shown as anchor with (underline and blue text)
-
-with col4:
-    for row in csv_file_content[10:]:
+    for index, row in df[:10].iterrows():
         st.header(row['title'])
         st.image('files/images/' + row['image'])
         st.write(row['description'])
         st.link_button('Source Code', row['url'])
-        # st.page_link(row['url'], label='Source Code')
-        # st.write(f"[Source Code]({row['url']})")
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row['title'])
+        st.image('files/images/' + row['image'])
+        st.write(row['description'])
+        st.link_button('Source Code', row['url'])
