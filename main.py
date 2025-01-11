@@ -35,7 +35,9 @@ with col3:
         st.header(row['title'])
         st.image('files/images/' + row['image'])
         st.write(row['description'])
-        st.link_button('Source Code', row['url'])
+        st.link_button('Source Code', row['url']) #shown as a button
+        # st.page_link(row['url'], label='Source Code') #shown as a simple plain text
+        # st.write(f"[Source Code]({row['url']})") #shown as anchor with (underline and blue text)
 
 with col4:
     for row in csv_file_content[10:]:
@@ -43,3 +45,5 @@ with col4:
         st.image('files/images/' + row['image'])
         st.write(row['description'])
         st.link_button('Source Code', row['url'])
+        # st.page_link(row['url'], label='Source Code')
+        # st.write(f"[Source Code]({row['url']})")
