@@ -1,4 +1,5 @@
 import streamlit as st
+from send_email import send_email
 
 st.title('Contact Me')
 
@@ -12,3 +13,9 @@ if submit_button:
         message = f"""Subject: Mail from Portfolio App\n
         {raw_message}\n
         From: {email_address}"""
+        result = send_email(message)
+    if result == 'Sent':
+        st.success('Your email is sent successfully!', icon="✅")
+        st.snow()
+    else:
+        st.error('Error Occurred', icon="🚨")
