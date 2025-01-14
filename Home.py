@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title='Home')
 
 content = ("""Lorem ipsum dolor sit amet, consectetur adipiscing elit.
  Donec eget luctus quam. Maecenas pharetra consequat diam consequat 
